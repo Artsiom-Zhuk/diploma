@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link href="style.css" rel="stylesheet" />
+        <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+        <title>Учет техники</title>
+    </head>
+    <body>
+        <div id="login_div" class="main-div">
+            <input type="email" placeholder="Электронная почта..." id="email_field" />
+            <input type="password" placeholder="Пароль..." id="password_field" />
+            <button onclick="login()">Войти в аккаунт</button>
+        </div>
+        <div class="admin" id="admin">
+            <header class="head">
+                <div class="titleHeader">Учет сельскозхозяйственной техники</div>
+                <button onclick="logout()" class="logout">Выйти</button>
+            </header>
+            <div class="mainContainer">
+                <form id="inputForm" name="inputForm" action="" class="form">
+                    Категория: <br />
+                    <input
+                        id="category"
+                        name="category"
+                        type="text"
+                        placeholder="Категория"
+                        required
+                        autocomplete="off"
+                    />
+                    <br /><br />
+                    Модель: <br />
+                    <input
+                        id="model"
+                        name="model"
+                        type="text"
+                        placeholder="Модель"
+                        autocomplete="off"
+                    />
+                    <br /><br />
+                    Масса: <br />
+                    <input
+                        id="weight"
+                        name="weight"
+                        type="number"
+                        placeholder="Масса"
+                        autocomplete="off"
+                    />
+                    <br /><br />
+                    Длина: <br />
+                    <input
+                        id="length"
+                        name="length"
+                        type="number"
+                        placeholder="Длина"
+                        autocomplete="off"
+                    />
+                    <br /><br />
+                    Ширина: <br />
+                    <input
+                        id="width"
+                        name="width"
+                        type="number"
+                        placeholder="Ширина"
+                        autocomplete="off"
+                    />
+                    <br /><br />
+                    Высота: <br />
+                    <input
+                        id="height"
+                        name="height"
+                        type="number"
+                        placeholder="Высота"
+                        autocomplete="off"
+                    />
+                    <br /><br />
+                    Дата производства: <br />
+                    <input
+                        id="dateOfManufacture"
+                        name="dateOfManufacture"
+                        type="date"
+                        placeholder="Дата производства"
+                        autocomplete="off"
+                    />
+                    <br /><br />
+                    Стоимость: <br />
+                    <input
+                        id="cost"
+                        name="cost"
+                        type="number"
+                        placeholder="Стоимость"
+                        autocomplete="off"
+                    /><br /><br />
+                    Дополнительная информация:
+                    <textarea class="txtArea" id="txtArea">
+                    </textarea>
+                    <br /><br />
+                    <div class="groupBtn">
+                        <input
+                            id="submitBtn"
+                            type="submit"
+                            name="add"
+                            value="Добавить"
+                        />
+                        <input id="resetForm" type="reset" name="resetValForm" value="Сбросить" />
+                    </div>
+                    <input
+                        class="btnCancelChange"
+                        id="btnCancelChange"
+                        type="button"
+                        value="Отменить изменение"
+                        disabled
+                    />
+                </form>
+                <div class="table">
+                    <div class="searchInputGroup">
+                        Поиск по категории: <br />
+                        <input
+                            id="searchCategory"
+                            type="text"
+                            placeholder="Поиск"
+                        />
+                        <div class="leftMargin5"></div>
+                        <input
+                            id="resetCategory"
+                            type="submit"
+                            name="resetCategory"
+                            value="Сбросить"
+                        />
+                        <div class="leftMargin70"></div>
+                        Поиск по модели: <br />
+                        <input id="searchModel" type="text" placeholder="Поиск" />
+                        <div class="leftMargin5"></div>
+                        <input
+                            id="resetModel"
+                            type="submit"
+                            name="resetModel"
+                            value="Сбросить"
+                        />
+                    </div>
+                    <table border="2">
+                        <thead>
+                            <tr>
+                                <th class="incrWidthTd">Категория</th>
+                                <th class="incrWidthTd">Модель</th>
+                                <th>Масса (кг)</th>
+                                <th>Длина (м)</th>
+                                <th>Ширина (м)</th>
+                                <th>Высота (м)</th>
+                                <th>Дата производ. (год)</th>
+                                <th>Стоимость (USD)</th>
+                                <th>Удаление</th>
+                                <th>Изменение</th>
+                                <th>Подробнее</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        <script src="auth.js"></script>
+    </body>
+</html>
